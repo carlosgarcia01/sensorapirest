@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   async getUsers(req, res, next) 
   {
-    const users = await UserService.getAllUsuarios();
+    const users = await UserService.getAllUsers();
       
     return res.status(200).send({ users });
     
@@ -14,14 +14,14 @@ module.exports = {
    {
     const { id } = req.params;
 
-    const user = await UserService.getUsuarioById(id);
+    const user = await UserService.getUserById(id);
 
     return res.status(200).send({ user });
   },
 
   async postUser(req,res,next)
   {
-
+    
     let userReceived = new User({
       document:req.body.document,
       name :req.body.name,
@@ -29,14 +29,12 @@ module.exports = {
       contact :req.body.contact,
       occupation :req.body.occupation,
       email :req.body.email,
-      password :req.body.password,
-      avatar:req.body.avatar,
-      signUpdate:req.body.signUpdate,
-      lastLogin:req.body.lastLogin,
+      password :req.body.password
     })
- 
 
-    const newUser = await UserService.postUsuario(userReceived);
+    console.log(userReceived);
+
+    const newUser = await UserService.postUser(userReceived);
 
     return res.status(200).send({ newUser });
   },
@@ -46,7 +44,7 @@ module.exports = {
       {
         const {id}=req.params;
         let userReceived = req.body;
-        userUpdate= await UserService.putUsuario(id,userReceived);
+        userUpdate= await UserService.putUser(id,userReceived);
 
         return res.status(200).send({userUpdate});
       },
@@ -54,7 +52,7 @@ module.exports = {
       async deleteUser(req,res)
       {
         const { id } = req.params;
-        UserService.deleteUsuario(id);
+        UserService.deleteUser(id);
         return res.status(200).send('Deleted user');
       },
 
@@ -66,10 +64,7 @@ module.exports = {
             contact :req.body.contact,
             occupation :req.body.occupation,
             email :req.body.email,
-            password :req.body.password,
-            avatar:req.body.avatar,
-            signUpdate:req.body.signUpdate,
-            lastLogin:req.body.lastLogin,
+            password :req.body.password
         })
       //acá invoco el gravatar antes de que grabe el usuario
         user.avatar = user.gravatar();

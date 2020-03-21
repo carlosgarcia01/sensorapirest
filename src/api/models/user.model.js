@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 
 const UserSchema = new Schema({
-    document:{type:Number,require:true,unique:true},
+    document:{type:String,require:true,unique:true},
     name:{type:String,require:true},
     lastname:{type:String,require:true},
     contact:{type:String,require:true},

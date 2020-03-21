@@ -12,8 +12,6 @@ const {
 module.exports = {
   async getAllUsers() {
 
-
-
      const users = await User.find();
     
    
