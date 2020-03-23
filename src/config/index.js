@@ -13,7 +13,7 @@ const config = convict({
 
   /* Mongodb atlas conection */
  // db: process.env.MONGODB_URI || 'mongodb://carlosg:elclasicox1x@carloscluster-shard-00-00-pgwzh.mongodb.net:27017,carloscluster-shard-00-01-pgwzh.mongodb.net:27017,carloscluster-shard-00-02-pgwzh.mongodb.net:27017/SensorTest?ssl=true&replicaSet=CarlosCluster-shard-0&authSource=admin&retryWrites=true&w=majority',
-  db:process.env.MONGODB_URI || 'mongodb+srv://carlosg:elclasicox1x@carloscluster-pgwzh.mongodb.net/SensorTest?retryWrites=true&w=majority',
+  db:process.env.MONGODB_URI || 'mongodb+srv://carlosg:elclasicox1x@carloscluster-pgwzh.mongodb.net/sensor?retryWrites=true&w=majority',
 
   /**
    * Server config

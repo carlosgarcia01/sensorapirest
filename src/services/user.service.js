@@ -29,6 +29,7 @@ module.exports = {
   },
 
   async postUser(userreq) {
+    console.log(userreq);
     const newUser = await userreq.save();
     return newUser;
   },

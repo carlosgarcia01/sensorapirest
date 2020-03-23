@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt-nodejs')
 const crypto = require('crypto')
 
 const UserSchema = new Schema({
@@ -11,9 +11,9 @@ const UserSchema = new Schema({
     occupation:{type:String,require:true},
     email:{type:String,require:true,unique:true},
     password:{type:String,require:true},
-    avatar: String,
+    avatar: {type:String,required: false},
     signUpdate: { type: Date, default: Date.now(),required: false },
-    lastLogin: Date,
+    lastLogin: {type: Date,required: false},
 });
 
 UserSchema.pre("save",function (next)  {

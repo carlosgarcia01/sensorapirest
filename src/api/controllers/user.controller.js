@@ -30,9 +30,9 @@ module.exports = {
       occupation :req.body.occupation,
       email :req.body.email,
       password :req.body.password
-    })
+    });
 
-    console.log(userReceived);
+    //console.log(userReceived);
 
     const newUser = await UserService.postUser(userReceived);
 
