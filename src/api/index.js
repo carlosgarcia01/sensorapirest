@@ -4,7 +4,12 @@ const morgan = require('morgan');
 
 const logger = require('../config/logger');
 
+
+
+//owns routes
+
 const userRoutes= require('./routes/user.routes')
+const penaltyfeeRoutes= require('./routes/penaltyfee.routes')
 
 const router = Router();
 
@@ -26,6 +31,7 @@ router.use(
 router.get('/', (req, res) => res.sendStatus(200));
 
 router.use('/users',userRoutes);
+router.use('/penaltyfee',penaltyfeeRoutes);
 
 /**
  * 404 error handling
