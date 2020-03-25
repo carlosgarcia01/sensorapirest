@@ -10,6 +10,7 @@ const logger = require('../config/logger');
 
 const userRoutes= require('./routes/user.routes')
 const penaltyfeeRoutes= require('./routes/penaltyfee.routes')
+const personRoutes= require('./routes/person.routes')
 
 const router = Router();
 
@@ -32,6 +33,7 @@ router.get('/', (req, res) => res.sendStatus(200));
 
 router.use('/users',userRoutes);
 router.use('/penaltyfee',penaltyfeeRoutes);
+router.use('/person',personRoutes);
 
 /**
  * 404 error handling

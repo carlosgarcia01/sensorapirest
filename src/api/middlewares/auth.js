@@ -1,8 +1,8 @@
 const jwt = require('express-jwt');
 
-const { JWT } = require('../../config');
+const { jwtConfig } = require('../../config');
 
-const { secret } = JWT;
+const { secret } = jwtConfig;
 
 /**
  * Express request handlers that verify if a valid token exists in request.
@@ -20,6 +20,26 @@ const { secret } = JWT;
  *
  * router.get('/users/:id', auth.required, usersController.getUser);
  */
+
+function isAuth (req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(403).send({ message: 'No tienes autorización' })
+  }
+
+  const token = req.headers.authorization.split(' ')[1]
+
+  UsuarioService.decodeToken(token)
+    .then(response => {
+      req.user = response
+
+      next()
+    })
+    .catch(response => {
+      res.status(response.status).send({message: response.message})
+    }),
+    isAuth
+}
+
 module.exports = {
   required: jwt({
     secret,
@@ -30,4 +50,5 @@ module.exports = {
     requestProperty: 'auth',
     credentialsRequired: false,
   }),
+  isAuth
 };
