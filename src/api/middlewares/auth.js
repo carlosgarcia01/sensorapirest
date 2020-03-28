@@ -1,5 +1,7 @@
 const jwt = require('express-jwt');
 
+const UserService = require('../../services/user.service')
+
 const { jwtConfig } = require('../../config');
 
 const { secret } = jwtConfig;
@@ -28,7 +30,7 @@ function isAuth (req, res, next) {
 
   const token = req.headers.authorization.split(' ')[1]
 
-  UsuarioService.decodeToken(token)
+  UserService.decodeToken(token)
     .then(response => {
       req.user = response
 

@@ -23,7 +23,7 @@ module.exports={
   async postPenaltyfee(req,res,next)
   {
     
-    let penaltyfeeReceived = new User({
+    let penaltyfeeReceived = new Penaltyfee({
         price: req.body.price,
         date: req.body.date,
         vehicleplate: req.body.vehicleplate
