@@ -18,9 +18,9 @@ module.exports = {
   
   
   
-    async getPersonById(id) {
+    async getPersonByDocument(id) {
   
-      const person = await Person.findById(id);
+      const person = await Person.find({"document": id});
       return person;
     },
   
