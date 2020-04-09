@@ -15,8 +15,7 @@ module.exports={
    {
     const { id } = req.params;
 
-    const person = await PersonService.getAllPerson();
-    person = person.filter(res => res.document==id);
+    const person = await PersonService.getAllPerson().filter(res => res.document==id);
 
     return res.status(200).send({ person });
   },
