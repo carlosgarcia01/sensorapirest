@@ -69,7 +69,7 @@ const config = convict({
     accessTokenExpiryTime: {
       doc: 'Access token expiry time (in seconds)',
       format: 'int',
-      default: 900, // 15 min
+      default: 86400, // 15 min
     },
     refreshTokenExpiryTime: {
       doc: 'Refresh token expiry time (in seconds)',
