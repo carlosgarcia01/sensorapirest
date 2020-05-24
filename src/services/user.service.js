@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
 const moment = require('moment');
@@ -27,8 +28,8 @@ module.exports = {
   },
 
   async putUser(id, userreq) {
-    const newuser = await User.findByIdAndUpdate(id, userreq);
-
+   // const newuser = await User.findByIdAndUpdate(id, userreq);
+    const newuser;
     if (userreq.password) {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(userreq.password, salt, null, async (_err, hash) => {
@@ -52,7 +53,7 @@ module.exports = {
       // exp:  moment().add(accessTokenExpiryTime/60/60/24,'days').unix()
     };
 
-    return await jwt.generateToken(payload, payload);
+    return jwt.generateToken(payload, payload);
   },
 
   async decodeToken(token) {
@@ -61,6 +62,7 @@ module.exports = {
         const payload = jwt.getDecodedToken(token);
 
         if (payload.exp <= moment().unix()) {
+          // eslint-disable-next-line prefer-promise-reject-errors
           reject({
             status: 401,
             message: 'El token ha expirado',
@@ -68,6 +70,7 @@ module.exports = {
         }
         resolve(payload.sub);
       } catch (err) {
+        // eslint-disable-next-line prefer-promise-reject-errors
         reject({
           status: 500,
           message: 'Token no válido',
