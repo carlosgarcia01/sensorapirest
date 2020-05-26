@@ -28,7 +28,7 @@ module.exports = {
   },
 
   async putUser(id, userreq) {
-   // const newuser = await User.findByIdAndUpdate(id, userreq);
+    const newuser = await User.findByIdAndUpdate(id, userreq);
     var newuser;
     if (userreq.password) {
       bcrypt.genSalt(10, (err, salt) => {

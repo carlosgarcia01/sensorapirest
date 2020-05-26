@@ -18,7 +18,7 @@ module.exports = {
 
   async postRfid(req, res, next) {
     const rfidReceived = new Rfid({
-      state: req.body.state
+      state: req.body.state,
     });
 
     const newRfid = await RfidService.postRfid(rfidReceived);
