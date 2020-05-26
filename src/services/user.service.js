@@ -28,8 +28,8 @@ module.exports = {
   },
 
   async putUser(id, userreq) {
-    const newuser = await User.findByIdAndUpdate(id, userreq);
-    var newuser;
+    var newuser = await User.findByIdAndUpdate(id, userreq);
+
     if (userreq.password) {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(userreq.password, salt, null, async (_err, hash) => {
