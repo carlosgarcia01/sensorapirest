@@ -4,14 +4,12 @@ const morgan = require('morgan');
 
 const logger = require('../config/logger');
 
+// owns routes
 
-
-//owns routes
-
-const userRoutes= require('./routes/user.routes')
-const penaltyfeeRoutes= require('./routes/penaltyfee.routes')
-const personRoutes= require('./routes/person.routes')
-const registerRoutes=require('./routes/register.routes')
+const userRoutes = require('./routes/user.routes');
+const penaltyfeeRoutes = require('./routes/penaltyfee.routes');
+const personRoutes = require('./routes/person.routes');
+const registerRoutes = require('./routes/register.routes');
 
 const router = Router();
 
@@ -32,10 +30,10 @@ router.use(
  */
 router.get('/', (req, res) => res.sendStatus(200));
 
-router.use('/users',userRoutes);
-router.use('/penaltyfee',penaltyfeeRoutes);
-router.use('/person',personRoutes);
-router.use('/registers',registerRoutes);
+router.use('/users', userRoutes);
+router.use('/penaltyfee', penaltyfeeRoutes);
+router.use('/person', personRoutes);
+router.use('/registers', registerRoutes);
 
 /**
  * 404 error handling
@@ -45,7 +43,5 @@ router.use((req, res, next) => {
 
   next(new NotFound(`The route '${method} ${baseUrl}${url}' doesn't exist.`));
 });
-
-
 
 module.exports = router;
