@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user.routes');
 const penaltyfeeRoutes = require('./routes/penaltyfee.routes');
 const personRoutes = require('./routes/person.routes');
 const registerRoutes = require('./routes/register.routes');
+const rfidRoutes = require('./routes/rfid.routes');
 
 const router = Router();
 
@@ -34,6 +35,7 @@ router.use('/users', userRoutes);
 router.use('/penaltyfee', penaltyfeeRoutes);
 router.use('/person', personRoutes);
 router.use('/registers', registerRoutes);
+router.use('/rfids', rfidRoutes);
 
 /**
  * 404 error handling
